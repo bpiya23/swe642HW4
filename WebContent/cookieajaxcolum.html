@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <style>
+        #container {
+            border-style: solid;
+            height: 1500px;
+            width: 900px;
+            margin: auto;
+            padding-left: 80px;
+            padding-right: 70px;
+        }
+        
+        .top {
+            border-style: hidden;
+            background-color: #336600;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-left: 50px;
+            margin-right: 15px;
+        }
+        
+        .firstcolumn {
+            float: left;
+            padding-left: 45px;
+        }
+        
+        .secondcolumn {
+            float: left;
+            padding-left: 45px;
+        }
+        
+        .address {
+            float: right;
+            font-style: bold;
+            margin-bottom: 50px;
+            font-size: 1.25em;
+        }
+        
+        .logo {
+            float: left;
+            height: 130px;
+            width: 300px;
+        }
+        
+        .thirdcolumn {
+            float: left;
+            padding-left: 45px;
+        }
+    </style>
+
+
+</head>
+
+<body onload="haveFocus();">
+
+    <div>
+        <br/>
+
+
+        <div class="firstname" style="float:left">
+
+        </div><br/><br/><br/>
+        <div style="padding-left:100px;float:left ">
+            <h3> Depertment Survey Form:</h3>
+            </br>
+            <div class="firstcolumn">
+                <br/>
+                <strong> Student ID:<span style='color:red'>*</span></strong>
+                <br/>
+                <input type='text' name='studentID' id='stuid' />
+                <br/>
+                <strong> Name:<span style='color:red'>*</span></strong>
+                <br/>
+                <input type='text' name='fullname' id='fullname' />
+                <br/>
+                <strong>Street Address:<span style='color:red'>*</span></strong>
+                <br/>
+
+                <input type="text " name="address" id="address " />
+                <br/>
+
+
+
+                <strong> Zip Code:<span style='color:red'>*</span></strong>
+                <br/>
+                <input type="text " name="zip " id="zip " onblur="populatecitystate(this.value) " />
+                <br/>
+                <span id="validateZip " class="validator "> </span>
+                <br/>
+                <strong>City:</strong>
+                <br/>
+                <input type="text " name="city " id='city' />
+                <br/>
+                <br/>
+
+                <strong>State:</strong>
+                <br/>
+                <input type="text " name="state" id='state' />
+                <br/>
+                <br/>
+                <strong>Telephone no:<span style='color:red'>*</span></strong>
+                <br/>
+                <input type="text " name="phone " id="phone " />
+                <br/>
+                <br/>
+                <strong>email:<span style='color:red'>*</span></strong>
+                <br/>
+                <input type="text " name="email " id="email " required/>
+                <br/>
+                <br/>
+                <strong>URL:<span style='color:red'>*</span></strong>
+                <br/>
+                <input type="text " name="url" id="url " />
+                <br/>
+                <br/>
+                <strong>Date Of Survey:<span style='color:red'>*</span></strong>
+                <br/>
+                <input type="text " name="dateofsurvey" id="dateofsurvey " />
+            </div>
+
+
+
+            <div class="secondcolumn">
+                <p>
+                    <strong> What you liked most about the campus:<span style='color:red'>*</span></strong></p>
+
+                <input type='checkbox' name='campus' value='students' id="campus " /><label for="thing "></label> students
+                <br>
+                <input type='checkbox' name='campus' value='location' id="campus " /><label for="thing "></label> location
+                <br>
+                <input type='checkbox' name='campus' value='campus' id="campus " /><label for="thing "></label> campus
+                <br>
+                <input type='checkbox' name='campus' value='atmosphere' id="campus " /><label for="thing "></label> atmosphere
+                <br>
+                <input type='checkbox' name='campus' value='dorm' id="campus " /><label for="thing "></label> dorm rooms
+                <br>
+                <input type='checkbox' name='campus' value='sports' id="campus " /><label for="thing "></label> sports
+                <br/>
+                <br/>
+                <strong> How you became interested in the University:<span style='color:red'>*</span></strong>
+                <br/>
+
+
+                <input type='radio' name='interest' value='friends' id="interest " /><label for="thing "></label> friends
+                <br/>
+                <input type='radio' name='interest' value='television' id="interest " /><label for="thing "></label> television
+                <br/>
+                <input type='radio' name='interest' value='internet' id="interest " /><label for="thing "></label> Internet
+                <br/>
+                <input type='radio' name='interest' value='other' id="interest " /><label for="thing "></label> other
+                <br/>
+                <br/>Additional Comments:<span style='color:red'>*</span>
+                <br/>
+                <br/>
+                <textarea rows="10 " columns="300 " name="addcomment" id="addcomment " /></textarea>
+            </div>
+
+
+            <div class="thirdcolumn ">
+
+                <strong>High school Graduation month:<span style='color:red'>*</span></strong>
+                <br/>
+                <select name="months" id='months'>
+  <option value='January'>January</option>
+  <option value=''>February</option>
+   <option value=''>March</option>
+    <option value=''>April</option>
+     <option value=''>May</option>
+      <option value=''>June</option>
+       <option value=''>July</option>
+        <option value=''>August</option>
+         <option value=''>September</option>
+          <option value=''>October</option>
+           <option value=''>November</option>
+            <option value=''>December</option>
+  </select> year: <input name="year " id="year ">
+                <br/>
+                <br/>
+
+                <strong>Select movie rating:<span style='color:red'>*</span></strong>
+                <br/>
+                <br/>
+
+                <strong> User ID:</strong>
+                <br/>
+                <input type="text " name="userid" id="userid " />
+                <br/>
+
+
+                <br/>
+                <strong> Movie ID:</strong>
+                <br/>
+                <input type="text " name="movieid " id="movieid " />
+                <br/>
+                <strong> Movie Rating:</strong>
+                <br/>
+                <input type="text " name="movierating" id="movierating" />
+                <br/>
+                <strong>Time Stamp:</strong>
+                <br/>
+                <input type="text " name="ts " id="ts " />
+                <br/>
+                <br/>
+                <strong>How likely you would recommend George Mason University to prospective students:<span style='color:red'>*</span></strong>
+                <br/>
+                <select name="recommend" id="recommend">
+  <option value='vl '>Very Likely</option>
+  <option value='Likely'>Likely</option>
+   <option value='unLikely'>UnLikely</option>
+   
+</select>
+
+                <br/>
+                <br/>
+                <strong>Data:</strong>
+                <br/>
+                <textarea row="10 " coloum="20 " name="field " id="field " onblur="dataFunction() "></textarea>
+                <br/>
+
+                <br/>
+                <br/>
+                <input type='submit' value='Submit' onclick="survey() " />
+                <input type='button' value='reset' onclick="clearvalues() " />
+                <br/>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <style>
+        #container {
+            border-style: solid;
+            height: 1300px;
+            width: 900px;
+            margin: auto;
+            padding-left: 80px;
+            padding-right: 70px;
+        }
+        
+        .top {
+            border-style: hidden;
+            background-color: #336600;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-left: 50px;
+            margin-right: 15px;
+        }
+        
+        #survey {
+            border-style: solid;
+            height: 700px;
+            width: 600px;
+            margin-top: 20px;
+            padding-left: 100px;
+            background-color: #ffffe6;
+        }
+        
+        .address {
+            float: right;
+            font-style: bold;
+            margin-bottom: 50px;
+            font-size: 1.25em;
+        }
+        
+        .logo {
+            float: left;
+            height: 130px;
+            width: 300px;
+        }
+    </style>
+
+    <script lang="text/javascript">
+        function haveFocus() {
+
+            document.getElementById("fullname").focus();
+        }
+    </script>
+
+
+</head>
+
+<body onload="haveFocus();">
+
+    <div >
+        <br/>
+
+        
+        &nbsp
+        <div id="survey " style="padding-left:100px; ">
+            <h3> Depertment Survey Form:</h3>
+            </br>
+            <table style="float:top; " "padding-top:25px; ">
+                <tr>
+                    <td><strong> Name:<span style='color:red'>*</span></strong></td>
+                    <td> <input type='text' name='nam' id='fullname' /></td>
+                </tr>&nbsp
+
+                <tr>
+                    <td> <strong>Street Address:<span style='color:red'>*</span></strong> </td>
+                    <td><input type="text " name="street add " /></td>
+                </tr>
+                <tr>
+                    <td><strong>City:<span style='color:red'>*</span></strong></td>
+                    <td> <input type="text " name=" name " /></td>
+                </tr>
+                <tr>
+                    <td><strong>State:<span style='color:red'>*</span></strong></td>
+                    <td><input type="text " name="name " /> </td>
+                </tr>
+                <tr>
+                    <td><strong> Zip Code:<span style='color:red'>*</span></strong></td>
+                    <td> <input type="text " name: "numeric "/></td>
+                </tr>
+                <tr>
+                    <td><strong>Telephone no:<span style='color:red'>*</span></strong></td>
+                    <td> <input type="text " name="email " /></td>
+                </tr>
+                <tr>
+                    <td><strong>email:<span style='color:red'>*</span></strong></td>
+                    <td> <input type="text " name="email " /></td>
+                </tr>
+                <tr>
+                    <td><strong>URL:<span style='color:red'>*</span></strong></td>
+                    <td> <input type="text " /></td>
+                </tr>
+                <tr>
+                    <td><strong>Date Of Survey:<span style='color:red'>*</span></strong> </td>
+                    <td> <input type="text " /></td>
+                </tr>
+
+            </table>
+            &nbsp;
+            <p><strong> What you liked most about the campus:<span style='color:red'>*</span></strong></p>
+            <div>
+                <input type='checkbox' name='thing' value='valuable' id="thing " /><label for="thing "></label> students
+                <br>
+                <input type='checkbox' name='thing' value='valuable' id="thing " /><label for="thing "></label> location
+                <br>
+                <input type='checkbox' name='thing' value='valuable' id="thing " /><label for="thing "></label> campus
+                <br>
+                <input type='checkbox' name='thing' value='valuable' id="thing " /><label for="thing "></label> atmosphere
+                <br>
+                <input type='checkbox' name='thing' value='valuable' id="thing " /><label for="thing "></label> dorm rooms
+                <br>
+                <input type='checkbox' name='thing' value='valuable' id="thing " /><label for="thing "></label> sports
+            </div>
+
+
+            <p><strong> How you became interested in the University:<span style='color:red'>*</span></strong></p>
+
+            <div>
+                <input type='radio' name='thing1' value='valuable' id="thing1 " /><label for="thing "></label> friends
+                <br>
+                <input type='radio' name='thing1' value='valuable' id="thing1 " /><label for="thing "></label> television
+                <br>
+                <input type='radio' name='thing1' value='valuable' id="thing1 " /><label for="thing "></label> Internet
+                <br>
+                <input type='radio' name='thing1' value='valuable' id="thing1 " /><label for="thing "></label> other
+                <br>
+
+            </div>
+
+            <div>
+                Additional Comments:<span style='color:red'>*</span> <textarea rows="10 " columns="300 " /></textarea>
+                <br/>
+                <p> <strong>High school Graduation month:<span style='color:red'>*</span></strong>
+
+                    <select id='months'>
+  <option value='January '>January</option>
+  <option value=''>February</option>
+   <option value=''>March</option>
+    <option value=''>April</option>
+     <option value=''>May</option>
+      <option value=''>June</option>
+       <option value=''>July</option>
+        <option value=''>August</option>
+         <option value=''>September</option>
+          <option value=''>October</option>
+           <option value=''>November</option>
+            <option value=''>December</option>
+  
+</select> year: <input name="year ">
+                    <br/>
+                    <p> <strong>Select movie rating:<span style='color:red'>*</span></strong></p>
+                    <table>
+                        <tr>
+                            <td> User ID:</td>
+                            <td> <input type="text " /></td>
+                        </tr>
+                        <tr>
+                            <td> Movie ID:</td>
+                            <td> <input type="text " /></td>
+                        </tr>
+                        <tr>
+                            <td> Movie Rating:</td>
+                            <td> <input type="text " />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Time Stamp:</td>
+                            <td><input type="text " /></td>
+                        </tr>
+                    </table>
+
+                    <p> <strong>How likely you would recommend George Mason University to prospective students:<span style='color:red'>*</span></strong></p>
+                    <select id='recommend'>
+  <option value='vl '>Very Likely</option>
+  <option value='Likely'>Likely</option>
+   <option value='unLikely'>UnLikely</option>
+   
+</select>
+                    <br/><br/><br/>
+                    <input type='submit' value='Submit '>
+
+            </div>
+
+
+
+
+
+        </div>
+
+        &nbsp &nbsp
+
+    </div>
+   
+</body>
+
+</html>

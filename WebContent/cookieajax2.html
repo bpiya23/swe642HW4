@@ -1,0 +1,672 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <style>
+        #container {
+            border-style: solid;
+            height: 1500px;
+            width: 900px;
+            margin: auto;
+            padding-left: 80px;
+            padding-right: 70px;
+        }
+        
+        .top {
+            border-style: hidden;
+            background-color: #336600;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-left: 50px;
+            margin-right: 15px;
+        }
+        
+        #survey {
+            border-style: solid;
+            height: 700px;
+            width: 600px;
+            margin-top: 20px;
+            padding-left: 100px;
+            background-color: #ffffe6;
+        }
+        
+        .address {
+            float: right;
+            font-style: bold;
+            margin-bottom: 50px;
+            font-size: 1.25em;
+        }
+        
+        .logo {
+            float: left;
+            height: 130px;
+            width: 300px;
+        }
+    </style>
+    <script type="text/javascript" src="json2.js"></script>
+    <script type="text/javascript" src="json_parse.js"></script>
+
+    <script lang="text/javascript">
+        var name;
+
+        // URL of the web service
+        var webServiceUrl = 'zipcodes.json';
+
+        function haveFocus() {
+
+            document.getElementById("fullname").focus();
+
+            // determine whether there is a cookie
+            if (document.cookie) {
+                // convert escape characters in the cookie string to their
+                // English notation
+                //alert("here");
+                var myCookie = unescape(document.cookie);
+
+                // split the cookie into tokens using = as delimiter
+                var cookieTokens = myCookie.split("=");
+
+                // set name to the part of the cookie that follows the = sign
+                name = cookieTokens[1];
+                //alert(name);
+                if(name==null){
+                		name = window.prompt("Please enter your name", "Paul");
+                    //alert(name);
+                    // escape special characters in the name string
+                    // and add name to the cookie
+                   var d = new Date();
+       			 	d.setTime(d.getTime() + (60*60*1000));
+        				var expires = "expires="+ d.toUTCString();
+                    document.cookie = "name=" + escape(name) + ";" + expires ;
+                }
+            } // end if
+            else {
+                // if there was no cookie, ask the user to input a name
+                name = window.prompt("Please enter your name", "Paul");
+                //alert(name);
+                // escape special characters in the name string
+                // and add name to the cookie
+               var d = new Date();
+   			 	d.setTime(d.getTime() + (60*60*1000));
+    				var expires = "expires="+ d.toUTCString();
+                document.cookie = "name=" + escape(name) + ";" + expires ;
+            } // end else
+
+            var now = new Date(); // current date and time
+            var hour = now.getHours(); // current hour (0-23)
+
+            var wrong = "<a href = 'javascript:wrongPerson()'> " + "Click here if you are not " + name + "</a>"
+
+            if (hour < 12) { // determine whether it is morning
+                document.getElementById("firstname").innerHTML = "<h2>Good Morning, " + name + ", welcome to Assignment#3<h2>" + wrong;
+            } else {
+                hour = hour - 12; // convert from 24-hour clock to PM time
+
+                // determine whether it is afternoon or evening
+                if (hour < 6) {
+                    document.getElementById("firstname").innerHTML = "<h2>Good Afternoon, " + name + ", welcome to Assignment#3<h2>"+ wrong;
+                } else {
+                    document.getElementById("firstname").innerHTML = "<h2>Good Evening, " + name + ", welcome to Assignment#3<h2>"+ wrong;
+                } // end else 
+
+                //document.getElementById("firstname").innerHTML = "Welcome to Survey Form" + name + "";
+
+                // document.writeln(
+                //  name + ",<h1> welcome to JavaScript programming!</h1>");
+                // document.writeln("<a href = 'javascript:wrongPerson()'> " +
+                //   "Click here if you are not " + name + "</a>");
+
+                // reset the document's cookie if wrong person
+                
+
+                // --> 
+
+            }
+        }
+
+        function wrongPerson() {
+            // reset the cookie
+            document.cookie = 'name=; Max-Age=0';
+            //document.cookie = "name=; Path=/" +
+            //    " expires=Thu, 01-Jan-95 00:00:01 GMT";
+            var myCookie = unescape(document.cookie);
+
+            // split the cookie into tokens using = as delimiter
+            var cookieTokens = myCookie.split("=");
+
+            // set name to the part of the cookie that follows the = sign
+            name = cookieTokens[1];
+            //alert(name);
+//alert(document.cookie);
+
+            // reload the page to get a new name after removing the cookie
+            location.reload();
+        } // end function wrongPerson
+
+        function eraseCookieFromAllPaths(name) {
+            // This function will attempt to remove a cookie from all paths.
+            var pathBits = location.pathname.split('/');
+            var pathCurrent = ' path=';
+
+            // do a simple pathless delete first.
+            document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+
+            for (var i = 0; i < pathBits.length; i++) {
+                pathCurrent += ((pathCurrent.substr(-1) != '/') ? '/' : '') + pathBits[i];
+                document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;' + pathCurrent + ';';
+            }
+        }
+
+        
+        function dataFunction() {
+
+            //
+            // get the value of the data text box and assign  it in  a variable
+            var data = document.getElementById("field").value;
+            //alert(data);
+            //check if the value is empty. if empty, alert.
+            if (data == null || data == '') {
+                // var data = document.getElementById("field").value;
+                alert("the data is empty");
+                document.getElementById('average').value = '';
+                document.getElementById('maximum').value = '';
+                //document.getElementById("field").focus();
+            } else {
+                // split the value using split() function and assign it to an array
+                var numbers = data;
+                var u = data.split(",");
+
+                //check the array size
+                var r = u.length;
+                // alert(r);
+
+                //if array size is less that 10, alert
+                if (r < 10) {
+                    alert("size less than 10");
+                    document.getElementById('average').value = '';
+                    document.getElementById('maximum').value = '';
+                }
+                //else compute the average.
+                else {
+                    // create a variable average and mamimum
+
+
+                    var sum = 0;
+                    var maxvalue = 0;
+
+
+
+
+                    // do a for loop on array. add each array element to average.
+                    for (i = 0; i < u.length; i++) {
+						if(isNaN(u[i])){
+							alert("only numbers are allowed");
+							document.getElementById('average').value = '';
+		                    document.getElementById('maximum').value = '';
+							break;
+						}
+						else {
+							if(u[i]>100){
+								alert("Number cannot exceed 100");
+								document.getElementById('average').value = '';
+			                    document.getElementById('maximum').value = '';
+								break;
+							}
+							
+						}
+                        sum = sum + parseFloat(u[i]);
+                        if (i == 0) {
+                            maxvalue = u[i];
+                            // alert(max);
+                        } else {
+
+                            if (u[i] > maxvalue) {
+                                maxvalue = u[i];
+                            }
+
+
+
+                        }
+                        // alert(sum);
+
+
+                        // calculate average by dividing the variable average with the size r;
+                        var avrg = sum / r;
+                        //alert(avrg);
+                        document.getElementById('average').value = avrg;
+                        document.getElementById('maximum').value = maxvalue;
+                    }
+                    //alert(maxvalue);
+                }
+
+            }
+        }
+        // form validation of fullname
+        function survey() {
+            var x = document.getElementById("fullname").value;
+
+            if (x == "") {
+                alert("fill the fullname");
+                document.getElementById("fullname").focus();
+                return false;
+            } else {
+                var letters = /^[A-Za-z]+$/;
+                if (!x.match(letters)) {
+                    alert("fullname should contain only alphabet");
+                    document.getElementById("fullname").focus();
+                    return false;
+                }
+            }
+
+            var address = document.getElementById("address").value;
+            if (address == "") {
+                alert("Address cannot be empty");
+                document.getElementById("address").focus();
+                return false;
+            } else {
+                var letters = /^[A-Za-z0-9]+$/;
+                if (!address.match(letters)) {
+                    alert("Address should contain only alphanumeric");
+                    document.getElementById("address").focus();
+                    return false;
+                }
+            }
+
+            var email = document.getElementById("email").value;
+            if (email == "") {
+                alert("email cannot be empty");
+                document.getElementById("email").focus();
+                return false;
+            } else {
+                var letters = /^([A-Za-z0-9_\.\-])+\@([A-Za-z0-9])+\.([A-Za-z0-9])+$/;
+                if (!email.match(letters)) {
+                    alert("invalid email.It should be in the format john@example.com");
+                    document.getElementById("email").focus();
+                    return false;
+                }
+            }
+            
+            var campus =  document.getElementsByName("campus");
+            //alert(campus.length);
+            var i,counter=0;
+            
+            for (i = 0; i < campus.length; i++) {
+              if (campus[i].checked) {
+                counter = counter + 1;
+              }
+            }
+            //alert(counter);
+            if(counter < 2){
+            	alert("minimun 2 checkboxes need to be checked for campus like");
+            	return false;
+            }
+            	
+            var interest =  document.getElementsByName("interest");
+            var txt = "";
+            var i=0, counter=0;
+            for (i = 0; i < interest.length; i++) {
+              if (interest[i].checked) {
+            	  counter = counter + 1;
+              }
+            }
+            if(counter==0){
+            	alert("minimun 1 radio needs to be selected for interest in university");
+            	return false;
+            }
+        }
+
+        function populatecitystate(zip) {
+            //alert("hi=" + zip);
+
+
+            // build parameter 
+            //alert("populatecitystate");
+            var params = '[{"param": "zip", "value": "' + zip + '"}]';
+            callWebService("populatecitystate", params, showCityState);
+
+
+        } // end function validateZip 
+        // get city and state that were generated using the zip code
+        // and display them on the page
+        function showCityState(asyncRequest) {
+            //alert("showCityState");
+            // display message while request is being processed
+            document.getElementById('validateZip').
+            innerHTML = "Checking zip...";
+            zipValid = false;
+            //alert(asyncRequest.readyState + "," + asyncRequest.status);
+            // if request has completed successfully, process the response 
+            if (asyncRequest.readyState == 4) {
+                if (asyncRequest.status == 200) {
+                    // convert the JSON string to an object
+                    //var data = asyncRequest.responseText.parseJSON();
+                    //alert(asyncRequest.responseText);
+                    var data = JSON.parse(asyncRequest.responseText);
+                    var zip = document.getElementById('zip').value;
+                    //alert(data.zipcodes.length);
+                    for (var i = 0; i < data.zipcodes.length; i++) {
+                        //alert(data.zipcodes[i].zip + "," + zip);
+                        if (data.zipcodes[i].zip == zip) {
+                            zipValid = true; // update validity tracker
+
+                            // display city and state
+                            document.getElementById('validateZip').innerHTML = '';
+                            document.getElementById('city').innerHTML = data.zipcodes[i].city;
+                            document.getElementById('state').
+                            innerHTML = data.zipcodes[i].state;
+
+                        }
+
+
+                    }
+                    // update zip code validity tracker and show city and state
+                    //alert(zipValid);
+                    if (zipValid == false) {
+
+
+                        // display city and state
+                        document.getElementById('validateZip').innerHTML = 'Invalid zip';
+                        document.getElementById('city').innerHTML = '';
+                        document.getElementById('state').
+                        innerHTML = '';
+                    } // end if 
+
+
+
+                } // end if
+                else if (asyncRequest.status == 500) {
+                    document.getElementById('validateZip').
+                    innerHTML = 'Zip validation service not avaliable';
+                } // end else if
+            }
+        } // end function showCityState
+
+        // send the telephone number to the server to validate format
+        function validatePhone(phone) {
+            var params = '[{ "param": "tel", "value": "' + phone + '"}]';
+            callWebService("validateTel", params, showPhoneError);
+        } // end function validatePhone
+        //callWebService("populatecitystate", params, showCityState);
+        function callWebService(method, paramString, callBack) {
+            //alert("callWebService");
+            // build request URL string 
+            //var requestUrl = webServiceUrl + "/" + method;
+            var requestUrl = webServiceUrl;
+            //alert(requestUrl);
+            //var params = paramString.parseJSON();
+            //alert(paramString);
+            var params = JSON.parse(paramString);
+
+            // build the parameter string to add to the url
+            for (var i = 0; i < params.length; i++) {
+                // checks whether it is the first parameter and builds
+                // the parameter string accordingly
+                if (i == 0)
+                    requestUrl = requestUrl + "?" + params[i].param +
+                    "=" + params[i].value; // add first parameter to url
+                else
+                    requestUrl = requestUrl + "&" + params[i].param +
+                    "=" + params[i].value; // add other parameters to url
+            } // end for 
+            //alert(requestUrl);
+            // attempt to send the asynchronous request
+            try {
+                var asyncRequest = new XMLHttpRequest(); // create request
+
+                // set up callback function and store it
+                asyncRequest.onreadystatechange = function() {
+                    showCityState(asyncRequest);
+                }; // end anonymous function 
+                // send the asynchronous request
+                asyncRequest.open('GET', requestUrl, true);
+                asyncRequest.setRequestHeader("Accept",
+                    "application/json; charset=utf-8");
+                asyncRequest.send(); // send request
+            } // end try
+            catch (exception) {
+                alert('Request Failed');
+            } // end catch
+        } // end function callWebService
+        
+        function clearvalues(){
+        	//alert("here");
+        	document.getElementById("fullname").value='';
+        	document.getElementById("address").value='';
+        	document.getElementById("zip").value='';
+        	document.getElementById("city").value='';
+        	document.getElementById("state").value='';
+        	document.getElementById("phone").value='';email
+        	document.getElementById("email").value='';
+        	document.getElementById("url").value='';
+        	document.getElementById("dateofsurvey").value='';
+        	
+        	document.getElementById("addcomment").value='';
+        	document.getElementById("months").selectedIndex=0;	
+        	document.getElementById("userid").value='';
+        	document.getElementById("movieid").value='';
+        document.getElementById("movierating").value='';
+        	document.getElementById("ts").value='';
+        document.getElementById("recommend").selectedIndex=0;
+        //	document.getElementById("campus").value='';
+        //document.getElementById("interest").value='';
+        document.getElementById("year").value='';
+        document.getElementById("validateZip").innerHTML='';
+        
+        var campus =  document.getElementsByName("campus");
+        for(i=0; i<campus.length; i++) {
+        	campus[i].checked = false;
+    		
+    		
+    		}
+        
+        var interest =  document.getElementsByName("interest");
+        for(i=0; i<interest.length; i++) {
+        	interest[i].checked = false;
+    		}
+    
+        	
+        
+        }
+    </script>
+
+</head>
+
+<body onload="haveFocus();">
+
+
+    </div>
+
+    <div id="container">
+        <br/>
+
+        <div class="top ">
+
+            <h1 style="margin-left:100px " ; "margin-right: 50px "; "float:top ";>
+                Computer Science & Information Technology
+            </h1>
+        </div>
+        &nbsp;
+        <div id="firstname" style="float:right">
+
+        </div>
+        <div id="survey " style="padding-left:100px; ">
+            <h3> Depertment Survey Form:</h3>
+            </br>
+            <table style="float:top;padding-top:25px; ">
+                <tr>
+                    <td><strong> Name:<span style='color:red'>*</span></strong></td>
+                    <td> <input type='text' name='nam' id='fullname' /></td>
+                </tr>&nbsp;
+
+                <tr>
+                    <td> <strong>Street Address:<span style='color:red'>*</span></strong> </td>
+                    <td><input type="text " name="streetadd " id="address" /></td>
+                </tr>
+                <tr>
+                    <td><strong> Zip Code:<span style='color:red'>*</span></strong></td>
+                    <td> <input type="text " name="zipcode " id="zip" onblur="populatecitystate(this.value)" />
+                        <span id="validateZip" class="validator"> </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>City:</strong>
+                    </td>
+                    <td>
+                        <div id="city"> </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>State:</strong></td>
+                    <td>
+                        <div id="state"> </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Telephone no:<span style='color:red'>*</span></strong></td>
+                    <td> <input type="text " name="phone " id="phone"/></td>
+                </tr>
+                <tr>
+                    <td><strong>email:<span style='color:red'>*</span></strong></td>
+                    <td> <input type="text " name="email " id="email" required/></td>
+                </tr>
+                <tr>
+                    <td><strong>URL:<span style='color:red'>*</span></strong></td>
+                    <td> <input type="text " id="url"/></td>
+                </tr>
+                <tr>
+                    <td><strong>Date Of Survey:<span style='color:red'>*</span></strong> </td>
+                    <td> <input type="text "  id="dateofsurvey"/></td>
+                </tr>
+
+            </table>
+            &nbsp;
+            <p><strong> What you liked most about the campus:<span style='color:red'>*</span></strong></p>
+            <div>
+                <input type='checkbox' name='campus' value='students' id="campus " /><label for="thing "></label> students
+                <br>
+                <input type='checkbox' name='campus' value='location' id="campus " /><label for="thing "></label> location
+                <br>
+                <input type='checkbox' name='campus' value='campus' id="campus " /><label for="thing "></label> campus
+                <br>
+                <input type='checkbox' name='campus' value='atmosphere' id="campus " /><label for="thing "></label> atmosphere
+                <br>
+                <input type='checkbox' name='campus' value='dorm' id="campus " /><label for="thing "></label> dorm rooms
+                <br>
+                <input type='checkbox' name='campus' value='sports' id="campus " /><label for="thing "></label> sports
+            </div>
+
+
+            <p><strong> How you became interested in the University:<span style='color:red'>*</span></strong></p>
+
+            <div>
+                <input type='radio' name='interest' value='friends' id="interest " /><label for="thing "></label> friends
+                <br>
+                <input type='radio' name='interest' value='television' id="interest " /><label for="thing "></label> television
+                <br>
+                <input type='radio' name='interest' value='internet' id="interest " /><label for="thing "></label> Internet
+                <br>
+                <input type='radio' name='interest' value='other' id="interest " /><label for="thing "></label> other
+                <br>
+
+            </div>
+
+            <div>
+                Additional Comments:<span style='color:red'>*</span> <textarea rows="10 " columns="300 " id="addcomment"/></textarea>
+                <br/>
+                <p> <strong>High school Graduation month:<span style='color:red'>*</span></strong>
+
+                    <select id='months'>
+  <option value='January '>January</option>
+  <option value=''>February</option>
+   <option value=''>March</option>
+    <option value=''>April</option>
+     <option value=''>May</option>
+      <option value=''>June</option>
+       <option value=''>July</option>
+        <option value=''>August</option>
+         <option value=''>September</option>
+          <option value=''>October</option>
+           <option value=''>November</option>
+            <option value=''>December</option>
+  
+</select> year: <input name="year " id="year">
+                    <br/>
+                    <p> <strong>Select movie rating:<span style='color:red'>*</span></strong></p>
+                    <table>
+                        <tr>
+                            <td> User ID:</td>
+                            <td> <input type="text "  id="userid"/></td>
+                        </tr>
+                        <tr>
+                            <td> Movie ID:</td>
+                            <td> <input type="text " id="movieid"/></td>
+                        </tr>
+                        <tr>
+                            <td> Movie Rating:</td>
+                            <td> <input type="text " id="movierating"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Time Stamp:</td>
+                            <td><input type="text " id="ts"/></td>
+                        </tr>
+                    </table>
+
+                    <p> <strong>How likely you would recommend George Mason University to prospective students:<span style='color:red'>*</span></strong></p>
+                    <select id='recommend'>
+  <option value='vl '>Very Likely</option>
+  <option value='Likely'>Likely</option>
+   <option value='unLikely'>UnLikely</option>
+   
+</select>
+                    <br/><br/><br/>
+                    <input type='submit' value='Submit' onclick="survey()" />
+                    <input type='button' value='reset' onclick="clearvalues()" />
+            </div>
+
+
+
+
+
+        </div>
+
+        &nbsp;
+        <div class="data">
+            <table>
+                <tr>
+                    <td> <strong>Data:</strong></td>
+                    <td><textarea row="10" coloum="20" id="field" onblur="dataFunction()"></textarea></td>
+                </tr>&nbsp;
+                <tr>
+                    <td>
+                        <lebel for='number'>Average:</lebel>
+                    </td>
+                    <td>
+                        <input type='text' name='average' id='average' />
+                    </td>
+                </tr>
+                </br>
+                </br>
+                <tr>
+                    <td>
+                        <lebel for='number'>Maximum:</lebel>
+                    </td>
+                    <td>
+                        <input type='text' name='maxium' id='maximum' />
+                    </td>
+                </tr>
+
+
+
+            </table>
+        </div>
+    </div>
+    <div style="float:right; ">
+        <img src="black-logo.png " height="100px " ; width="300px " ;/>
+    </div>
+</body>
+
+</html>
