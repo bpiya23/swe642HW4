@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/SurveyServlet")
 public class SurveyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+    private SurveyDelegate delegate = new SurveyDelegate();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,9 +30,11 @@ public class SurveyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("here 1");
 		String address;
-		SurveyDelegate delegate = new SurveyDelegate();
+		
 		String operation = request.getParameter("operation");
+		System.out.println("here 2  " + operation);
 		if (operation == null) {
 		operation = "unknown";
 		}

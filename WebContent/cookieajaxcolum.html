@@ -6,10 +6,10 @@
     <style>
         #container {
             border-style: solid;
-            height: 1500px;
-            width: 900px;
+            height: 1000px;
+            width: 1500px;
             margin: auto;
-            padding-left: 80px;
+            padding-left: 50px;
             padding-right: 70px;
         }
         
@@ -24,12 +24,12 @@
         
         .firstcolumn {
             float: left;
-            padding-left: 45px;
+            padding-left: 35px;
         }
         
         .secondcolumn {
             float: left;
-            padding-left: 45px;
+            padding-left: 35px;
         }
         
         .address {
@@ -47,7 +47,7 @@
         
         .thirdcolumn {
             float: left;
-            padding-left: 45px;
+            padding-left: 35px;
         }
     </style>
 
@@ -58,8 +58,8 @@
 
     <div>
         <br/>
-
-
+<form action="/swe642HW4/SurveyServlet" method="post">
+<input type="hidden" name="operation" value="calcMean"/>
         <div class="firstname" style="float:left">
 
         </div><br/><br/><br/>
@@ -214,7 +214,7 @@
    <option value='unLikely'>UnLikely</option>
    
 </select>
-<div id="dbox"> </div>
+<div id="dbox" title= "pls correct the following erors"> </div>
                 <br/>
                 <br/>
                 <strong>Data:</strong>
@@ -228,7 +228,7 @@
                 <input type='button' value='reset' onclick="clearvalues() " />
                 <br/>
 
-
+</form>
 
             </div>
 

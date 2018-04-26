@@ -13,11 +13,14 @@ private Connection conn =null;
 	
 public StudentDAO() {
 	try {
+		System.out.println("class for name");
 		Class.forName ("oracle.jdbc.driver.OracleDriver");
 	
+		System.out.println("establishing connection class for name");
 		 conn = DriverManager.getConnection (
 		"jdbc:oracle:thin:@apollo.ite.gmu.edu:1521:ite10g",
 		"sbhatta7", "kajyss");
+		 System.out.println("conn established");
 		 
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
