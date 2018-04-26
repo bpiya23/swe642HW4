@@ -17,7 +17,8 @@ public StudentDAO() {
 	
 		 conn = DriverManager.getConnection (
 		"jdbc:oracle:thin:@apollo.ite.gmu.edu:1521:ite10g",
-		"swe642a", "swe642a");
+		"sbhatta7", "kajyss");
+		 
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
