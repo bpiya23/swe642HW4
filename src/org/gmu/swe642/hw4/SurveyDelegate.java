@@ -4,6 +4,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * this is the delegate object that forwards the requests to proper dao or processor class
+ * 
+ * @author saurav bhattacharyya
+ *
+ */
 public class SurveyDelegate {
 
 	DataProcessor processor = new DataProcessor();
@@ -13,7 +19,7 @@ public class SurveyDelegate {
 		// TODO Auto-generated constructor stub
 	}
 	
-public DataBean calculate(HttpServletRequest request) {
+public DataBean calculate(HttpServletRequest request) throws Exception {
 		
 	
 	//store student
@@ -38,15 +44,17 @@ public DataBean calculate(HttpServletRequest request) {
 		return dataBean;
 	}
 	
-public void getStudent(HttpServletRequest request) {
+public void getStudent(HttpServletRequest request) throws Exception{
 	
 	String studentID= request.getParameter("studentID");
 	StudentBean bean = dao.getStudent(studentID);
+	if(bean.getStudentID()==null)
+		throw new Exception();
 	System.out.println("retrieved cmpus = " + bean.getCampus());
 	request.getSession().setAttribute("studentDetails", bean);
 }
 
-	public StudentBean storeStudent(HttpServletRequest request) {
+	public StudentBean storeStudent(HttpServletRequest request) throws Exception{
 		StudentBean bean =new StudentBean();
 		String studentID= request.getParameter("studentID");
 		System.out.println("studentID=" + studentID);

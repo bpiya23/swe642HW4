@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
- * Servlet implementation class SurveyServlet
+ * the front controller that handles the http request from presentation layer.
+ * 
+ * @author saurav bhattacharyya
+ *
  */
 @WebServlet("/SurveyServlet")
 public class SurveyServlet extends HttpServlet {
@@ -55,10 +59,10 @@ public class SurveyServlet extends HttpServlet {
 			address = "/Student.jsp";
 			delegate.getStudent(request);
 		} else {
-			address = "/UnknownOperation.jsp";
+			address = "/NoSuchStudentJSP.jsp";
 		}
 		} catch(Exception e) {
-			address = "/UnknownOperation.jsp";
+			address = "/NoSuchStudentJSP.jsp";
 		}
 		RequestDispatcher dispatcher =
 		request.getRequestDispatcher(address);

@@ -1,5 +1,11 @@
 package org.gmu.swe642.hw4;
 
+/**
+ * 
+ * this class stores the mean and standard deviation
+ * @author saurav bhattacharyya
+ *
+ */
 public class DataBean {
 private double  mean,  standardDeviation;
 

@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * this is the mean and standard deviation calculator
+ * 
+ * @author saurav bhattacharyya
+ *
+ */
 public class DataProcessor {
 
 	DataBean bean = new DataBean();

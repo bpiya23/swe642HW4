@@ -8,6 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * the dao object that interacts with database.
+ * 
+ * @author saurav bhattacharyya
+ *
+ */
 public class StudentDAO {
 	
 private Connection conn =null;
@@ -29,7 +35,7 @@ public StudentDAO() {
 	}
 }
 	
-public void storeStudent(StudentBean bean) {
+public void storeStudent(StudentBean bean) throws Exception{
 	try {
 		
 		
@@ -65,10 +71,11 @@ public void storeStudent(StudentBean bean) {
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		throw new Exception();
 	}
 }
 	
-public 	StudentBean getStudent(String id) {
+public 	StudentBean getStudent(String id) throws Exception{
 	String query="select * from Student where studentID='" + id + "'";
 	Statement statement;
 	StudentBean bean =new StudentBean();
@@ -146,13 +153,14 @@ bean.setYear(year);
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		throw new Exception();
 	}
 	
 	
 	return bean;
 }
 
-public List<String> getStudentIds(){
+public List<String> getStudentIds() throws Exception {
 	
 	String query="select distinct studentID from Student" ;
 	Statement statement;
@@ -168,6 +176,7 @@ public List<String> getStudentIds(){
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+		throw new Exception();
 	}
 	
 	

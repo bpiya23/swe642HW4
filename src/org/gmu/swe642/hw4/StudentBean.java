@@ -1,5 +1,11 @@
 package org.gmu.swe642.hw4;
 
+/**
+ * this class holds the student information.
+ * 
+ * @author saurav bhattacharyya
+ *
+ */
 public class StudentBean {
 
 	private String studentID;
