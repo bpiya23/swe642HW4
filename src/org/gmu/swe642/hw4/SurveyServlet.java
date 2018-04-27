@@ -39,20 +39,20 @@ public class SurveyServlet extends HttpServlet {
 		operation = "unknown";
 		}
 		if (operation.equals("calcMean")) {
-			address = "/WEB-INF/SimpleAcknowledgement.jsp";
+			address = "/SimpleAcknowledgement.jsp";
 			
 			DataBean bean = delegate.calculate(request);
-			request.setAttribute("meanBean", bean);
+			
 			
 			if(bean!=null) {
 				if(bean.getMean()>90)
-					address = "/WEB-INF/WinnerAcknowledgement.jsp";
+					address = "/WinnerAcknowledgement.jsp";
 			}
 			
 		} else if (operation.equals("cancel")) {
-			address = "/WEB-INF/SimpleAcknowledgement.jsp";
+			address = "/SimpleAcknowledgement.jsp";
 		} else {
-			address = "/WEB-INF/UnknownOperation.jsp";
+			address = "/UnknownOperation.jsp";
 		}
 		RequestDispatcher dispatcher =
 		request.getRequestDispatcher(address);

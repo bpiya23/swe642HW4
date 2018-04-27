@@ -18,7 +18,7 @@
         var name;
 
         // URL of the web service
-        var webServiceUrl = 'zipcodes.json';
+        var webServiceUrl = '/swe642HW4/zipcodes.json';
 
         function haveFocus() {
 
@@ -223,7 +223,7 @@
         function survey() {
         	var eror="";
         	
-        	return true;
+        	//return true;
         	
             var x = document.getElementById("fullname").value;
 
@@ -239,13 +239,16 @@
                     //return false;
                 }
             }
-
+            //alert("survey111s");
             var address = document.getElementById("address").value;
+            //alert("survey1ss" + address);
             if (address == "") {
+            	//alert("survey1ss");
             	eror +="Address cannot be empty<br/>";
                 document.getElementById("address").focus();
                 //return false;
             } else {
+            	//alert("survey1ss");
                 var letters = /^[A-Za-z0-9]+$/;
                 if (!address.match(letters)) {
                 	eror +="Address should contain only alphanumeric<br/>";
@@ -253,7 +256,7 @@
                     //return false;
                 }
             }
-
+            //alert("survey1");
             var email = document.getElementById("email").value;
             if (email == "") {
             	eror +="email cannot be empty<br/>";
@@ -267,17 +270,25 @@
                    // return false;
                 }
             }
-            
+            //alert("survey2");
             var campus =  document.getElementsByName("campus");
             //alert(campus.length);
-            var i,counter=0;
+            var i,counter=0, str="";
             
             for (i = 0; i < campus.length; i++) {
               if (campus[i].checked) {
                 counter = counter + 1;
+                str += campus[i].value + ",";
               }
             }
             //alert(counter);
+            //alert(str);
+            if(str.lastIndexOf(",") !=-1)
+            	str = str.substring(0,str.length-1);
+          //alert(str);
+            document.getElementsByName("selectedcampus").value=str;
+          //alert("sel cam  = " + document.getElementsByName("selectedcampus").value);
+            
             if(counter < 2){
             	eror +="minimun 2 checkboxes need to be checked for campus like<br/>";
             	//return false;
@@ -295,6 +306,9 @@
             	eror +="minimun 1 radio needs to be selected for interest in university<br/>";
             	//return false;
             }
+            
+            
+            
             
             if(eror!=""){
             	$("#dbox").html(eror);
@@ -322,8 +336,7 @@
         function showCityState(asyncRequest) {
             //alert("showCityState");
             // display message while request is being processed
-            document.getElementById('validateZip').
-            innerHTML = "Checking zip...";
+            document.getElementById('validateZip').innerHTML = "Checking zip...";
             zipValid = false;
             //alert(asyncRequest.readyState + "," + asyncRequest.status);
             // if request has completed successfully, process the response 
@@ -342,9 +355,8 @@
 
                             // display city and state
                             document.getElementById('validateZip').innerHTML = '';
-                            document.getElementById('city').innerHTML = data.zipcodes[i].city;
-                            document.getElementById('state').
-                            innerHTML = data.zipcodes[i].state;
+                            document.getElementById('city').value = data.zipcodes[i].city;
+                            document.getElementById('state').value = data.zipcodes[i].state;
 
                         }
 
@@ -357,9 +369,9 @@
 
                         // display city and state
                         document.getElementById('validateZip').innerHTML = 'Invalid zip';
-                        document.getElementById('city').innerHTML = '';
+                        document.getElementById('city').value = '';
                         document.getElementById('state').
-                        innerHTML = '';
+                        value = '';
                     } // end if 
 
 
@@ -577,7 +589,6 @@ function includeHTML() {
 <ul>
 <li><a href="#panel1">HW1</a></li>
 <li><a href="#panel2">HW2</a></li>
-<li><a href="#panel3">HW3</a></li>
 <li> <a href="#panel4" onclick="haveFocus()">HW4</a></li>
 </ul>
 
@@ -587,10 +598,7 @@ function includeHTML() {
 <div id="panel2">
 <div w3-include-html="gmucs-new.html"></div> 
 </div>
-<div id="panel3">
-<div w3-include-html="cookieajax.html"></div>
 
-</div>
   <div id="panel4"> 
   <div w3-include-html="cookieajaxcolum.html"> </div>
   </div> 

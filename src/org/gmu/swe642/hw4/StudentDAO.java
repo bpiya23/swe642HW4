@@ -45,20 +45,19 @@ public void storeStudent(StudentBean bean) {
 				+ "','" + bean.getUrl()
 				+ "','" + bean.getDateofsurvey()
 				+ "','" + bean.getAddcomment()
-				+ "'," + bean.getMonths()
-				+ ",'" + bean.getUserid()
+				+ "','" + bean.getMonths()
+				+ "','" + bean.getUserid()
 				+ "','" + bean.getMovieid()
 				+ "','" + bean.getMovierating()
 				+ "','" + bean.getTs()
-				+ "'," + bean.getRecommend()
-				+ ",'" + bean.getYear()
+				+ "','" + bean.getRecommend()
+				+ "','" + bean.getYear()
 				+ "','" + bean.getCampus()
 				+ "','" + bean.getInterest()
-				
-				+ "'," 
+				+ "','0','0')" 
 				
 				;
-		
+		System.out.println(query);
 		Statement statement = conn.createStatement();
 		int status = statement.executeUpdate(query);
 		

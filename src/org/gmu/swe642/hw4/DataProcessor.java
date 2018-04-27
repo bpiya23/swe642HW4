@@ -20,7 +20,8 @@ public class DataProcessor {
 		if(arr != null && arr.length != 0 ) {
 			
 			for (int i = 0; i < arr.length; i++) {
-				int version= Integer.parseInt(arr[i]);
+				System.out.println(arr[i]);
+				int version= Integer.parseInt(arr[i].trim());
 				mean +=version;
 			}
 			
@@ -39,7 +40,7 @@ public class DataProcessor {
         if(arr != null && arr.length != 0 ) {
 			
 			for (int i = 0; i < arr.length; i++) {
-				int version= Integer.parseInt(arr[i]);
+				int version= Integer.parseInt(arr[i].trim());
 				temp += (version-mean)*(version-mean);
 			}
 			

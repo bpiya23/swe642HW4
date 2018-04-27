@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 
 <html>
@@ -54,13 +56,12 @@
 
 </head>
 
-<body>
+<body onload="haveFocus();">
 
     <div>
         <br/>
 <form action="/swe642HW4/SurveyServlet" method="post">
 <input type="hidden" name="operation" value="calcMean"/>
-<input type="hidden" name="selectedcampus" value=""/>
         <div class="firstname" style="float:left">
 
         </div><br/><br/><br/>
@@ -73,55 +74,55 @@
                 <br/>
                 <strong> Student ID:<span style='color:red'>*</span></strong>
                 <br/>
-                <input type='text' name='studentID' id='stuid' value="abc"/>
+               <!--   <input type='text' name='studentID' id='stuid' />-->
                 <br/>
                 <strong> Name:<span style='color:red'>*</span></strong>
                 <br/>
-                <input type='text' name='fullname' id='fullname'  value="abc"/>
+               <!--  <input type='text' name='fullname' id='fullname' />-->
                 <br/>
                 <strong>Street Address:<span style='color:red'>*</span></strong>
                 <br/>
 
-                <input type="text" name="address" id="address"  value="abc"/>
+               <!-- <input type="text " name="address" id="address " />-->
                 <br/>
 
 
 
                 <strong> Zip Code:<span style='color:red'>*</span></strong>
                 <br/>
-                <input type="text" name="zip" id="zip" onblur="populatecitystate(this.value) " />
+              <!--  <input type="text " name="zip " id="zip " onblur="populatecitystate(this.value) " />-->
                 <br/>
-                <span id="validateZip" class="validator"> </span>
+                <span id="validateZip " class="validator "> </span>
                 <br/>
                 <strong>City:</strong>
                 <br/>
-                <input type="text" name="city" id="city" />
+                <!--<input type="text " name="city " id='city' />-->
                 <br/>
                 <br/>
 
                 <strong>State:</strong>
                 <br/>
-                <input type="text" name="state" id="state" />
+               <!-- <input type="text " name="state" id='state' />-->
                 <br/>
                 <br/>
                 <strong>Telephone no:<span style='color:red'>*</span></strong>
                 <br/>
-                <input type="text " name="phone" id="phone"  value="abc"/>
+               <!-- <input type="text " name="phone " id="phone " />-->
                 <br/>
                 <br/>
                 <strong>email:<span style='color:red'>*</span></strong>
                 <br/>
-                <input type="text " name="email" id="email" required value="abc@abc.com"/>
+               <!-- <input type="text " name="email " id="email " required/>-->
                 <br/>
                 <br/>
                 <strong>URL:<span style='color:red'>*</span></strong>
                 <br/>
-                <input type="text " name="url" id="url"  value="abc"/>
+               <!--<input type="text " name="url" id="url " />-->
                 <br/>
                 <br/>
                 <strong>Date Of Survey:<span style='color:red'>*</span></strong>
                 <br/>
-                <input type="text " name="dateofsurvey" id="dateofsurvey"  value="abc"/>
+               <!-- <input type="text " name="dateofsurvey" id="dateofsurvey " />-->
             </div>
 
 
@@ -130,35 +131,35 @@
                 <p>
                     <strong> What you liked most about the campus:<span style='color:red'>*</span></strong></p>
 
-                <input type='checkbox' name='campus' value='students' id="campus" /><label for="thing "></label> students
+                <input type='checkbox' name='campus' value='students' id="campus " /><label for="thing "></label> students
                 <br>
-                <input type='checkbox' name='campus' value='location' id="campus" /><label for="thing "></label> location
+                <input type='checkbox' name='campus' value='location' id="campus " /><label for="thing "></label> location
                 <br>
-                <input type='checkbox' name='campus' value='campus' id="campus" /><label for="thing "></label> campus
+                <input type='checkbox' name='campus' value='campus' id="campus " /><label for="thing "></label> campus
                 <br>
-                <input type='checkbox' name='campus' value='atmosphere' id="campus" /><label for="thing "></label> atmosphere
+                <input type='checkbox' name='campus' value='atmosphere' id="campus " /><label for="thing "></label> atmosphere
                 <br>
-                <input type='checkbox' name='campus' value='dorm' id="campus" /><label for="thing "></label> dorm rooms
+                <input type='checkbox' name='campus' value='dorm' id="campus " /><label for="thing "></label> dorm rooms
                 <br>
-                <input type='checkbox' name='campus' value='sports' id="campus" /><label for="thing "></label> sports
+                <input type='checkbox' name='campus' value='sports' id="campus " /><label for="thing "></label> sports
                 <br/>
                 <br/>
                 <strong> How you became interested in the University:<span style='color:red'>*</span></strong>
                 <br/>
 
 
-                <input type='radio' name='interest' value='friends' id="interest" /><label for="thing "></label> friends
+                <input type='radio' name='interest' value='friends' id="interest " /><label for="thing "></label> friends
                 <br/>
-                <input type='radio' name='interest' value='television' id="interest" /><label for="thing "></label> television
+                <input type='radio' name='interest' value='television' id="interest " /><label for="thing "></label> television
                 <br/>
-                <input type='radio' name='interest' value='internet' id="interest" /><label for="thing "></label> Internet
+                <input type='radio' name='interest' value='internet' id="interest " /><label for="thing "></label> Internet
                 <br/>
-                <input type='radio' name='interest' value='other' id="interest" /><label for="thing "></label> other
+                <input type='radio' name='interest' value='other' id="interest " /><label for="thing "></label> other
                 <br/>
                 <br/>Additional Comments:<span style='color:red'>*</span>
                 <br/>
                 <br/>
-                <textarea rows="10 " columns="300 " name="addcomment" id="addcomment"  value="abc"/></textarea>
+              <!-- <textarea rows="10 " columns="300 " name="addcomment" id="addcomment " /></textarea>-->
             </div>
 
 
@@ -166,20 +167,20 @@
 
                 <strong>High school Graduation month:<span style='color:red'>*</span></strong>
                 <br/>
-                <select name="months" id='months'>
-  <option value='0'>January</option>
-  <option value='1'>February</option>
-   <option value='2'>March</option>
-    <option value='3'>April</option>
-     <option value='4'>May</option>
-      <option value='5'>June</option>
-       <option value='6'>July</option>
-        <option value='7'>August</option>
-         <option value='8'>September</option>
-          <option value='9'>October</option>
-           <option value='10'>November</option>
-            <option value='11'>December</option>
-  </select> year: <input name="year" id="year"  value="abc">
+              <!--   <select name="months" id='months'>
+  <option value='January'>January</option>
+  <option value=''>February</option>
+   <option value=''>March</option>
+    <option value=''>April</option>
+     <option value=''>May</option>
+      <option value=''>June</option>
+       <option value=''>July</option>
+        <option value=''>August</option>
+         <option value=''>September</option>
+          <option value=''>October</option>
+           <option value=''>November</option>
+            <option value=''>December</option>
+  </select>--> year: <!--  <input name="year " id="year ">-->
                 <br/>
                 <br/>
 
@@ -189,44 +190,44 @@
 
                 <strong> User ID:</strong>
                 <br/>
-                <input type="text " name="userid" id="userid"  value="abc"/>
+                <!--<input type="text " name="userid" id="userid " />-->
                 <br/>
 
 
                 <br/>
                 <strong> Movie ID:</strong>
                 <br/>
-                <input type="text " name="movieid" id="movieid"  value="abc"/>
+               <!-- <input type="text " name="movieid " id="movieid " />-->
                 <br/>
                 <strong> Movie Rating:</strong>
                 <br/>
-                <input type="text " name="movierating" id="movierating"  value="abc"/>
+               <!-- <input type="text " name="movierating" id="movierating" />-->
                 <br/>
                 <strong>Time Stamp:</strong>
                 <br/>
-                <input type="text " name="ts" id="ts"  value="abc"/>
+                <!--<input type="text " name="ts " id="ts " />-->
                 <br/>
                 <br/>
                 <strong>How likely you would recommend George Mason University to prospective students:<span style='color:red'>*</span></strong>
                 <br/>
-                <select name="recommend" id="recommend">
-  <option value='0'>Very Likely</option>
-  <option value='1'>Likely</option>
-   <option value='2'>UnLikely</option>
+                <!--  <select name="recommend" id="recommend">
+  <option value='vl '>Very Likely</option>
+  <option value='Likely'>Likely</option>
+   <option value='unLikely'>UnLikely</option>
    
-</select>
+</select>-->
 <div id="dbox" title= "pls correct the following erors"> </div>
                 <br/>
                 <br/>
                 <strong>Data:</strong>
                 <br/>
-                <textarea row="10 " coloum="20 " name="field" id="field"  value=""> 12,23,45,67,98,56,78,12 </textarea>
-                
+               <!-- <textarea row="10 " coloum="20 " name="field " id="field " onblur="dataFunction() "></textarea>-->
+                <br/>
 
                 <br/>
                 <br/>
-                <input type='submit' value='Submit' onclick="return survey(); " />
-                <input type='button' value='reset' onclick="clearvalues() " />
+               <!-- <input type='submit' value='Submit' onclick="survey() " />-->
+               <!-- <input type='button' value='reset' onclick="clearvalues() " />-->
                 <br/>
 
 </form>

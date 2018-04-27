@@ -14,12 +14,12 @@ public class StudentBean {
 	private String dateofsurvey;
 	
 	private String addcomment;
-	private int months=0;	
+	private String months;	
 	private String userid;
 	private String movieid;
 private String movierating;
 	private String ts;
-private int recommend=0;
+private String recommend;
 //	private String campus;
 //private String interest;
 private String year;
@@ -95,10 +95,10 @@ public String getAddcomment() {
 public void setAddcomment(String addcomment) {
 	this.addcomment = addcomment;
 }
-public int getMonths() {
+public String getMonths() {
 	return months;
 }
-public void setMonths(int months) {
+public void setMonths(String months) {
 	this.months = months;
 }
 public String getUserid() {
@@ -125,10 +125,10 @@ public String getTs() {
 public void setTs(String ts) {
 	this.ts = ts;
 }
-public int getRecommend() {
+public String getRecommend() {
 	return recommend;
 }
-public void setRecommend(int recommend) {
+public void setRecommend(String recommend) {
 	this.recommend = recommend;
 }
 public String getYear() {
