@@ -57,8 +57,8 @@
 <body>
 <div class="top ">
 <div style="float:right; " class="tooltip">
-        <img src="black-logo.png " height="100px " ; width="250px " />
-        <span class="tooltiptext">Please visit <a href="http://www.gmu.edu"> http://www.gmu.edu</a> for more information</span>
+        <img src="black-logo.png " height="90px " ; width="250px " />
+       
     </div>
             <h1 style="margin-left:100px " ; "margin-right: 50px "; "float:top ";>
                 Computer Science & Information Technology
@@ -71,7 +71,7 @@
   
   
   <p>
-  here is the mean:{meanBean.mean}  and standard deviation {meanBean.standardDeviation}
+  here is the mean:${meanBean.mean}  and standard deviation ${meanBean.standardDeviation}
   </p>
   
   <p>
