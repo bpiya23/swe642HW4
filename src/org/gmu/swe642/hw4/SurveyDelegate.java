@@ -20,6 +20,7 @@ public DataBean calculate(HttpServletRequest request) {
 	storeStudent( request);
 	
 		String field = request.getParameter("field");
+		request.getSession().setAttribute("field", field);
 		System.out.println("field=" + field);
 		String[] arr = null;
 		if(field !=null) {

@@ -53,10 +53,56 @@
         }
     </style>
 
+<script lang="text/javascript">
+
+function fillupData(){
+	var chkboxVal = "${studentDetails.campus}";
+	var radioVal = "${studentDetails.interest}";
+	var monthsel = "${studentDetails.months}";
+	var recoVal = "${studentDetails.recommend}";
+	
+	 var campus =  document.getElementsByName("campus");
+     
+     for (i = 0; i < campus.length; i++) {
+       if (chkboxVal.indexOf(campus[i].value) !=-1) {
+          campus[i].checked = 'true';
+       }
+     }
+     
+     var interest =  document.getElementsByName("interest");
+     for (i = 0; i < interest.length; i++) {
+         if (radioVal.indexOf(interest[i].value) !=-1) {
+        	 interest[i].checked = 'true';
+         }
+       }
+     
+     var months =  document.getElementById("months");
+     //alert(months.options);
+     for(var i=0; i < months.options.length; i++)
+     {
+    	 //alert(months.options[i].value + "==" +  monthsel)
+       if(months.options[i].value == monthsel) {
+    	   months.selectedIndex = i;
+         break;
+       }
+     }
+     
+     var recommend =  document.getElementById("recommend");
+     for(var i=0; i < recommend.options.length; i++)
+     {
+       if(recommend.options[i].value == recoVal) {
+    	   recommend.selectedIndex = i;
+         break;
+       }
+     }
+	
+}
+
+</script>
 
 </head>
 
-<body onload="haveFocus();">
+<body onload="fillupData();">
 
     <div>
         <br/>
@@ -74,15 +120,17 @@
                 <br/>
                 <strong> Student ID:<span style='color:red'>*</span></strong>
                 <br/>
+                ${studentDetails.studentID}
                <!--   <input type='text' name='studentID' id='stuid' />-->
                 <br/>
                 <strong> Name:<span style='color:red'>*</span></strong>
                 <br/>
+                ${studentDetails.fullname}
                <!--  <input type='text' name='fullname' id='fullname' />-->
                 <br/>
                 <strong>Street Address:<span style='color:red'>*</span></strong>
                 <br/>
-
+				${studentDetails.address}
                <!-- <input type="text " name="address" id="address " />-->
                 <br/>
 
@@ -90,38 +138,45 @@
 
                 <strong> Zip Code:<span style='color:red'>*</span></strong>
                 <br/>
+                ${studentDetails.zip}
               <!--  <input type="text " name="zip " id="zip " onblur="populatecitystate(this.value) " />-->
                 <br/>
                 <span id="validateZip " class="validator "> </span>
                 <br/>
                 <strong>City:</strong>
                 <br/>
+                ${studentDetails.city}
                 <!--<input type="text " name="city " id='city' />-->
                 <br/>
                 <br/>
 
                 <strong>State:</strong>
                 <br/>
+                ${studentDetails.state}
                <!-- <input type="text " name="state" id='state' />-->
                 <br/>
                 <br/>
                 <strong>Telephone no:<span style='color:red'>*</span></strong>
                 <br/>
+                ${studentDetails.phone}
                <!-- <input type="text " name="phone " id="phone " />-->
                 <br/>
                 <br/>
                 <strong>email:<span style='color:red'>*</span></strong>
                 <br/>
+                ${studentDetails.email}
                <!-- <input type="text " name="email " id="email " required/>-->
                 <br/>
                 <br/>
                 <strong>URL:<span style='color:red'>*</span></strong>
                 <br/>
+                ${studentDetails.url}
                <!--<input type="text " name="url" id="url " />-->
                 <br/>
                 <br/>
                 <strong>Date Of Survey:<span style='color:red'>*</span></strong>
                 <br/>
+                ${studentDetails.dateofsurvey}
                <!-- <input type="text " name="dateofsurvey" id="dateofsurvey " />-->
             </div>
 
@@ -159,6 +214,7 @@
                 <br/>Additional Comments:<span style='color:red'>*</span>
                 <br/>
                 <br/>
+                ${studentDetails.addcomment}
               <!-- <textarea rows="10 " columns="300 " name="addcomment" id="addcomment " /></textarea>-->
             </div>
 
@@ -167,20 +223,20 @@
 
                 <strong>High school Graduation month:<span style='color:red'>*</span></strong>
                 <br/>
-              <!--   <select name="months" id='months'>
-  <option value='January'>January</option>
-  <option value=''>February</option>
-   <option value=''>March</option>
-    <option value=''>April</option>
-     <option value=''>May</option>
-      <option value=''>June</option>
-       <option value=''>July</option>
-        <option value=''>August</option>
-         <option value=''>September</option>
-          <option value=''>October</option>
-           <option value=''>November</option>
-            <option value=''>December</option>
-  </select>--> year: <!--  <input name="year " id="year ">-->
+                 <select name="months" id='months'>
+  <option value='0'>January</option>
+  <option value='1'>February</option>
+   <option value='2'>March</option>
+    <option value='3'>April</option>
+     <option value='4'>May</option>
+      <option value='5'>June</option>
+       <option value='6'>July</option>
+        <option value='7'>August</option>
+         <option value='8'>September</option>
+          <option value='9'>October</option>
+           <option value='10'>November</option>
+            <option value='11'>December</option>
+  </select> year: ${studentDetails.year}<!--  <input name="year " id="year ">-->
                 <br/>
                 <br/>
 
@@ -190,6 +246,7 @@
 
                 <strong> User ID:</strong>
                 <br/>
+                ${studentDetails.userid}
                 <!--<input type="text " name="userid" id="userid " />-->
                 <br/>
 
@@ -197,30 +254,34 @@
                 <br/>
                 <strong> Movie ID:</strong>
                 <br/>
+                ${studentDetails.movieid}
                <!-- <input type="text " name="movieid " id="movieid " />-->
                 <br/>
                 <strong> Movie Rating:</strong>
                 <br/>
+                ${studentDetails.movierating}
                <!-- <input type="text " name="movierating" id="movierating" />-->
                 <br/>
                 <strong>Time Stamp:</strong>
                 <br/>
+                ${studentDetails.ts}
                 <!--<input type="text " name="ts " id="ts " />-->
                 <br/>
                 <br/>
                 <strong>How likely you would recommend George Mason University to prospective students:<span style='color:red'>*</span></strong>
                 <br/>
-                <!--  <select name="recommend" id="recommend">
-  <option value='vl '>Very Likely</option>
-  <option value='Likely'>Likely</option>
-   <option value='unLikely'>UnLikely</option>
+                 <select name="recommend" id="recommend">
+  <option value='0'>Very Likely</option>
+  <option value='1'>Likely</option>
+   <option value='2'>UnLikely</option>
    
-</select>-->
+</select>
 <div id="dbox" title= "pls correct the following erors"> </div>
                 <br/>
-                <br/>
+                <!--  <br/>
                 <strong>Data:</strong>
-                <br/>
+                <br/>-->
+                
                <!-- <textarea row="10 " coloum="20 " name="field " id="field " onblur="dataFunction() "></textarea>-->
                 <br/>
 
