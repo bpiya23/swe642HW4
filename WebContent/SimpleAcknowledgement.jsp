@@ -81,40 +81,28 @@
   <p>
   <h4> The following is the list of students</h4>
   <% List eList = (List)session.getAttribute("studentList");%>
-  
-  <table>
+  <ul>
+
     <%
     for(int i=0; i<eList.size();i++){ 
-    	if(i==0){
-    		out.println("<tr>");
-    	}
-    	else {
-    	if(i%5==0){
-    		out.println("</tr><tr>");
-    	}
-    	}
+    	
     %>
         
-            <td><a href="#" onclick="window.open('/swe642HW4/SurveyServlet?studentID=<%= eList.get(i) %>&operation=studentDetails')"><%= eList.get(i) %></a></td> 
+            
+            <li><a href="#" onclick="window.open('/swe642HW4/SurveyServlet?studentID=<%= eList.get(i) %>&operation=studentDetails')">
+            <%= eList.get(i) %></a></li> 
         
       <%
       
     
     }%>
-    </tr>
-</table>
-  
-  
-  <ul>
-  
-  
-  
+
   </ul>
   
   
   </p>
   
-  
+  <input type="button" name="goback" value="goback to home page" onclick="location.href='jqueryHW4.html'"/>
   
   </div>      
         
