@@ -30,8 +30,10 @@ public class SurveyServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("here 1");
 		String address;
+		try {
+		System.out.println("here 1");
+		
 		
 		String operation = request.getParameter("operation");
 		System.out.println("here 2  " + operation);
@@ -49,9 +51,13 @@ public class SurveyServlet extends HttpServlet {
 					address = "/WinnerAcknowledgement.jsp";
 			}
 			
-		} else if (operation.equals("cancel")) {
-			address = "/SimpleAcknowledgement.jsp";
+		} else if (operation.equals("studentDetails")) {
+			address = "/Student.jsp";
+			delegate.getStudent(request);
 		} else {
+			address = "/UnknownOperation.jsp";
+		}
+		} catch(Exception e) {
 			address = "/UnknownOperation.jsp";
 		}
 		RequestDispatcher dispatcher =

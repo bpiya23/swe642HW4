@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Error page</title>
 </head>
 <body>
-Unknown operation invoked.
+	An Unknown operation has been invoked or an error occured.
+
+
 </body>
 </html>

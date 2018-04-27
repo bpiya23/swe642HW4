@@ -1,5 +1,7 @@
 package org.gmu.swe642.hw4;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class SurveyDelegate {
@@ -25,12 +27,23 @@ public DataBean calculate(HttpServletRequest request) {
 			
 		}
 		System.out.println("arr=" + arr);
-		request.getSession().setAttribute("meanBean", processor.calculate(arr));
+		DataBean dataBean = processor.calculate(arr);
+		request.getSession().setAttribute("meanBean", dataBean);
 		
+		//get all the student ids and stor in session
+		List<String> list = dao.getStudentIds();
+		request.getSession().setAttribute("studentList", list);
 		
-		return processor.calculate(arr);
+		return dataBean;
 	}
 	
+public void getStudent(HttpServletRequest request) {
+	
+	String studentID= request.getParameter("studentID");
+	StudentBean bean = dao.getStudent(studentID);
+	System.out.println("retrieved cmpus = " + bean.getCampus());
+	request.getSession().setAttribute("studentDetails", bean);
+}
 
 	public StudentBean storeStudent(HttpServletRequest request) {
 		StudentBean bean =new StudentBean();

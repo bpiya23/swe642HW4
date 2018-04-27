@@ -4,7 +4,54 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>winnder acknowledgement</title>
+ <style>
+        #container {
+            border-style: solid;
+            height: 1000px;
+            width: 1500px;
+            margin: auto;
+            padding-left: 50px;
+            padding-right: 70px;
+        }
+        
+        .top {
+            border-style: hidden;
+            background-color: #336600;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-left: 50px;
+            margin-right: 15px;
+        }
+        
+        .firstcolumn {
+            float: left;
+            padding-left: 35px;
+        }
+        
+        .secondcolumn {
+            float: left;
+            padding-left: 35px;
+        }
+        
+        .address {
+            float: right;
+            font-style: bold;
+            margin-bottom: 50px;
+            font-size: 1.25em;
+        }
+        
+        .logo {
+            float: left;
+            height: 130px;
+            width: 300px;
+        }
+        
+        .thirdcolumn {
+            float: left;
+            padding-left: 35px;
+        }
+    </style>
 </head>
 <body>
 <div class="top ">
@@ -20,8 +67,10 @@
   <div>
   <h2> Thanks for Filling up the survey form. You are the raffle winner of two movie tickets</h2>
   
+  
+  
   <p>
-  here is the mean:  and standard deviation 
+  here is the mean:{meanBean.mean}  and standard deviation {meanBean.standardDeviation}
   </p>
   
   <p>
